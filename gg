@@ -1,0 +1,41 @@
+module Main (main) where
+
+suma :: int -> int -> int
+suma x y = x + y
+
+piaAprox :: double --declara las variables 
+piaAprox = 3.14159
+
+inc :: int -> int
+inc = (+ 1)
+
+esPar :: int -> Bool
+esPar n = if n ´mod´ 2 == 0 then True else False
+
+bmiClasifca :: Double -> string --funcion par ahcerla 
+bmiClasifca x
+  |x < 18.5 = "bajo"
+  |x < 25.0 = "Normal"
+  |x < 30.0 = "Sobre Peso"
+  |otherwise = "obesidad"
+
+indice :: Double -> Double -> Double
+indice x y = (x - y) / s 
+  where s = x + y
+
+
+doubleluegoInc :: Int -> Int
+doubleluegoInc = inc . (*2) 
+     
+
+main :: IO ()
+main = do
+    purstrin "hola mundo"
+
+    print(suma 10 5)
+    print(piaAprox)
+    print(inc 5)
+    print(esPar 11)
+    print(bmiClasifca 26.8)
+    print(indice 12.5 45.5)
+    print(doubleluegoInc 10)
