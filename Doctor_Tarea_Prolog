@@ -1,20 +1,16 @@
 % un horario esta libre si existe en la disponibilidad,
 % pero no aparece como cita ocupada
-Dr_Doctor(Victor, [Lunes,Martes,Miercoles,Jueves,Viernes]).
-Horario([12:00, 01:00, 02:00, 03:00, 04:00, 05:00, 06:00, 07:00, 08:00, 09:00, 10:00, 11:00]).
+dr_doctor(dictor).
+
+dia(lunes, 11)
+dia(lunes,12).
 
 Paciente(Ana).
 Paciente(Pancho).
 Paciente(Meni).
 
-Dr_Doctor(X, [X|_]).
-Dr_Doctor(X, [_|R]) :- Dr_Doctor(X, R).
+cita_ocupa(ana, lunes,).
 
-Dr_Doctor(X, [X|_]).
-Dr_Doctor(X, [_|R]) :- Dr_Doctor(X, R).
-
-Horario(X, [X|_]).
-Horario(X, [_|R]) :- Horario(X, R).
 
 %Se puede agendar si el horario esta disponible 
 %%y el paciente no tiene ya ua cita 
@@ -28,5 +24,3 @@ format(' ~w puede agendar con ~w el ~w a las ~w:00. ~n',
 
 %format(' ~w puede agendar con ~w el ~w a las ~w:00. ~n', 
        %[Paciente, Doctor, Dia, Hora]).
-
-
