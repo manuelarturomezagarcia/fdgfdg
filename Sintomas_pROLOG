@@ -1,0 +1,30 @@
+sintomas(ana, fiebre).
+sintomas(ana, tos).
+sintomas(ana, malestar).
+
+sintomas(luis, exantema).
+sintomas(luis, fiebre).
+sintomas(sofia, tos).
+sintomas(sofia, dolor_garganta).
+
+temperatura(ana, 38.5).
+temperatura(luis, 39.2).
+temperatura(sofia, 26.8).
+
+tiene(P,S) :- sintomas(P, S).
+no_tiene(P,S) :- \+ sintomas(P,S).
+
+diagnostico(P, gripe) :- 
+    tiene(P, fiebre),
+    (tiene(p, tos) ; tiene(P,dolor_garganta)). 
+
+diagnostico(P, sarampion) :-
+    tiene(P, exantema),
+    tiene(P, fiebre),
+    no_tiene(P, dolor_garganta).
+
+riesgo_fiebre(P, alto) :-
+    temperatura(P, T), (T > 38 ->  true; fail).
+riesgo_fiebre(P, normal) :- temperatura(P, T), (T =< 38 ->  true; fail).
+
+
