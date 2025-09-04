@@ -1,0 +1,27 @@
+receta(bowl, [frijol, maiz, aguacate, tomate, chile]).
+receta(sandwich, [pan, pavo, lechuga, tomate, queso]).
+receta(ensalda, [garbanzo, espinaca, pepino, aceite_Oliva]).
+receta(hotcake, [harina, huevo, leche, miel]).
+
+proteina_animal(pavo).
+proteina_animal(huevo).
+proteina_animal(queso_panela).
+leguminosa(frijol).
+leguminosa(garbanzo).
+
+alergia(gluten, pan).
+alergia(gluten, harina).
+alergia(lactosa, leche).
+
+miembro(X, [X|_]).
+miembro(X, [_|R]) :- miembro(X, R).
+
+apta_para(Receta, Persona) :-
+    receta(Receta, Ingrediente),
+    ( Persona = intolerante_lactosa ->   \+ (miembro(I, Ingrediente), alergia(lactosa, I))
+    ;persona = celiaco ->  \+ (miembro(I, Ingrediente), alergia(gluen, I))
+    ; true
+    ),
+    (   (miembro(P, Ingrediente), proteina_animal(P))
+    ;   (miembro(L, Ingrediente), leguminosa(L))
+    ).
